@@ -158,7 +158,7 @@ public class DownloaderServiceMarshaller {
     /**
      * Returns a proxy that will marshall calls to IDownloaderService methods
      * 
-     * @param ctx
+     * @param msg
      * @return
      */
     public static IDownloaderService CreateProxy(Messenger msg) {

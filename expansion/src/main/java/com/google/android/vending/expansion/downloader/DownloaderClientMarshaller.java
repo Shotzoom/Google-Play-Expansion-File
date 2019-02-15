@@ -51,7 +51,7 @@ import org.slf4j.LoggerFactory;
  *
  * <p>When your application first starts, you should first check whether your app's expansion files are
  * already on the device. If not, you should then call {@link #startDownloadServiceIfRequired}, which
- * starts your {@link impl.DownloaderService} to download the expansion files if necessary. The method
+ * starts your {@link DownloaderService} to download the expansion files if necessary. The method
  * returns a value indicating whether download is required or not.
  *
  * <p>If a download is required, {@link #startDownloadServiceIfRequired} begins the download through
@@ -220,7 +220,7 @@ public class DownloaderClientMarshaller {
      * 
      * @param itf An implementation of IDownloaderClient that will be called
      *            when remote method calls are unmarshaled.
-     * @param downloaderService The class for your implementation of {@link impl.DownloaderService}.
+     * @param downloaderService The class for your implementation of {@link DownloaderService}.
      * @return The {@link IStub} that allows you to connect to the service such that
      * your {@link IDownloaderClient} receives status updates.
      */
@@ -245,7 +245,7 @@ public class DownloaderClientMarshaller {
      * @param notificationClient A PendingIntent to start the Activity in your application
      * that shows the download progress and which will also start the application when download
      * completes.
-     * @param serviceClass the class of your {@link imp.DownloaderService} implementation
+     * @param serviceClass the class of your {@link DownloaderService} implementation
      * @return whether the service was started and the reason for starting the service.
      * Either {@link #NO_DOWNLOAD_REQUIRED}, {@link #LVL_CHECK_REQUIRED}, or {@link
      * #DOWNLOAD_REQUIRED}.
@@ -262,7 +262,7 @@ public class DownloaderClientMarshaller {
      * This version assumes that the intent contains the pending intent as a parameter. This
      * is used for responding to alarms.
      * <p>The pending intent must be in an extra with the key {@link 
-     * impl.DownloaderService#EXTRA_PENDING_INTENT}.
+     * DownloaderService#EXTRA_PENDING_INTENT}.
      * 
      * @param context
      * @param notificationClient

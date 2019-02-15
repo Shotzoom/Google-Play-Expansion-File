@@ -35,7 +35,7 @@ import com.google.android.vending.expansion.downloader.IDownloaderClient;
  * may be transient. (for example: the user is queried to continue the download
  * on 3G when it started on WiFi, but then the phone locks onto WiFi again so
  * the prompt automatically goes away)
- * <p/>
+ *
  * The application interface for the downloader also needs to understand and
  * handle these transient states.
  */

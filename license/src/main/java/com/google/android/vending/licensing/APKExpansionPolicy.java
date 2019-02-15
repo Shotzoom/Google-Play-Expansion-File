@@ -38,12 +38,12 @@ import java.util.Vector;
  * from the licensing service. Specifically, the licensing server sends the
  * following information: response validity period, error retry period, and
  * error retry count.
- * <p/>
+ *
  * These values will vary based on the the way the application is configured in
  * the Android Market publishing console, such as whether the application is
  * marked as free or is within its refund period, as well as how often an
  * application is checking with the licensing service.
- * <p/>
+ *
  * Developers who need more fine grained control over their application's
  * licensing policy should implement a custom Policy.
  */
@@ -114,7 +114,7 @@ public class APKExpansionPolicy implements Policy {
 
     /**
      * Process a new response from the license server.
-     * <p/>
+     *
      * This data will be used for computing future policy decisions. The
      * following parameters are processed:
      * <ul>
@@ -296,7 +296,6 @@ public class APKExpansionPolicy implements Policy {
      *
      * @param index the index of the URL to fetch. This value will be either
      *              MAIN_FILE_URL_INDEX or PATCH_FILE_URL_INDEX
-     * @param URL   the URL to set
      */
     public String getExpansionURL(int index) {
         if (index < mExpansionURLs.size()) {

@@ -40,27 +40,24 @@ public interface IDownloaderService {
 
     /**
      * Request that the service abort the current download. The service should
-     * respond by changing the state to {@link IDownloaderClient.STATE_ABORTED}.
+     * respond by changing the state to STATE_ABORTED.
      */
     void requestAbortDownload();
 
     /**
      * Request that the service pause the current download. The service should
-     * respond by changing the state to
-     * {@link IDownloaderClient.STATE_PAUSED_BY_REQUEST}.
+     * respond by changing the state to STATE_PAUSED_BY_REQUEST.
      */
     void requestPauseDownload();
 
     /**
      * Request that the service continue a paused download, when in any paused
-     * or failed state, including
-     * {@link IDownloaderClient.STATE_PAUSED_BY_REQUEST}.
+     * or failed state, including STATE_PAUSED_BY_REQUEST.
      */
     void requestContinueDownload();
 
     /**
-     * Set the flags for this download (e.g.
-     * {@link DownloaderService.FLAGS_DOWNLOAD_OVER_CELLULAR}).
+     * Set the flags for this download (e.g. FLAGS_DOWNLOAD_OVER_CELLULAR).
      * 
      * @param flags
      */
@@ -72,8 +69,7 @@ public interface IDownloaderService {
     void requestDownloadStatus();
 
     /**
-     * Call this when you get {@link
-     * IDownloaderClient.onServiceConnected(Messenger m)} from the
+     * Call this when you get IDownloaderClient.onServiceConnected(Messenger m) from the
      * DownloaderClient to register the client with the service. It will
      * automatically send the current status to the client.
      * 

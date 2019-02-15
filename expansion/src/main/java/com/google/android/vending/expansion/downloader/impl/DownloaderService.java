@@ -232,8 +232,7 @@ public abstract class DownloaderService extends CustomIntentService implements I
      * This download has successfully completed. Warning: there might be other
      * status values that indicate success in the future. Use isSucccess() to
      * capture the entire category.
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_SUCCESS = 200;
 
@@ -259,8 +258,7 @@ public abstract class DownloaderService extends CustomIntentService implements I
 
     /**
      * This download was canceled
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_CANCELED = 490;
 
@@ -276,112 +274,99 @@ public abstract class DownloaderService extends CustomIntentService implements I
      * Typically, that's because the filesystem is missing or full. Use the more
      * specific {@link #STATUS_INSUFFICIENT_SPACE_ERROR} and
      * {@link #STATUS_DEVICE_NOT_FOUND_ERROR} when appropriate.
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_FILE_ERROR = 492;
 
     /**
      * This download couldn't be completed because of an HTTP redirect response
      * that the download manager couldn't handle.
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_UNHANDLED_REDIRECT = 493;
 
     /**
      * This download couldn't be completed because of an unspecified unhandled
      * HTTP code.
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_UNHANDLED_HTTP_CODE = 494;
 
     /**
      * This download couldn't be completed because of an error receiving or
      * processing data at the HTTP level.
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_HTTP_DATA_ERROR = 495;
 
     /**
      * This download couldn't be completed because of an HttpException while
      * setting up the request.
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_HTTP_EXCEPTION = 496;
 
     /**
      * This download couldn't be completed because there were too many
      * redirects.
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_TOO_MANY_REDIRECTS = 497;
 
     /**
      * This download couldn't be completed due to insufficient storage space.
      * Typically, this is because the SD card is full.
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_INSUFFICIENT_SPACE_ERROR = 498;
 
     /**
      * This download couldn't be completed because no external storage device
      * was found. Typically, this is because the SD card is not mounted.
-     * 
-     * @hide
+     *
      */
     public static final int STATUS_DEVICE_NOT_FOUND_ERROR = 499;
 
     /**
      * This download is allowed to run.
-     * 
-     * @hide
+     *
      */
     public static final int CONTROL_RUN = 0;
 
     /**
      * This download must pause at the first opportunity.
-     * 
-     * @hide
+     *
      */
     public static final int CONTROL_PAUSED = 1;
 
     /**
      * This download is visible but only shows in the notifications while it's
      * in progress.
-     * 
-     * @hide
+     *
      */
     public static final int VISIBILITY_VISIBLE = 0;
 
     /**
      * This download is visible and shows in the notifications while in progress
      * and after completion.
-     * 
-     * @hide
+     *
      */
     public static final int VISIBILITY_VISIBLE_NOTIFY_COMPLETED = 1;
 
     /**
      * This download doesn't show in the UI or in the notifications.
-     * 
-     * @hide
+     *
      */
     public static final int VISIBILITY_HIDDEN = 2;
 
     /**
-     * Bit flag for {@link #setAllowedNetworkTypes} corresponding to
+     * Bit flag for setAllowedNetworkTypes corresponding to
      * {@link ConnectivityManager#TYPE_MOBILE}.
      */
     public static final int NETWORK_MOBILE = 1 << 0;
 
     /**
-     * Bit flag for {@link #setAllowedNetworkTypes} corresponding to
+     * Bit flag for setAllowedNetworkTypes corresponding to
      * {@link ConnectivityManager#TYPE_WIFI}.
      */
     public static final int NETWORK_WIFI = 1 << 1;
@@ -575,7 +560,7 @@ public abstract class DownloaderService extends CustomIntentService implements I
             mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         }
         if (null == mWifiManager) {
-            mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+            mWifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         }
         if (mConnectivityManager == null) {
             LOG.warn("couldn't get connectivity manager to poll network state");
@@ -656,7 +641,7 @@ public abstract class DownloaderService extends CustomIntentService implements I
      * network connection, even if Market delivers all of the files.
      * 
      * @param context
-     * @param thisIntent
+     * @param pendingIntent
      * @return true if the app should wait for more guidance from the
      *         downloader, false if the app can continue
      * @throws NameNotFoundException
