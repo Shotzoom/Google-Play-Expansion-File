@@ -35,12 +35,12 @@ dependencies {
 }
 
 publish {
-    userOrg = 'alexeydanilov'
+    userOrg = 'shotzoom'
     repoName = 'apk-expansion'
-    groupId = 'com.danikula.expansion'
+    groupId = 'com.shotzoom.coachnow.expansion'
     artifactId = 'expansion'
     publishVersion = '1.3.4'
     description = 'Google`s `play_apk_expansion` open source project.'
-    website = 'https://github.com/danikula/Google-Play-Expansion-File'
+    website = 'https://github.com/Shotzoom/Google-Play-Expansion-File'
 }
 
