@@ -7,22 +7,28 @@ Google's library for managing [APK expansion files](http://developer.android.com
 Because of Google hasn't published it to any repository yet.
 
 ## Where published?
-[Here](https://bintray.com/alexeydanilov/apk-expansion)
+[Here](https://bintray.com/shotzoom/apk-expansion)
 
 ## How to use?
 Modify `build.gradle`:
 ```
 repositories {
-    maven { url 'https://dl.bintray.com/alexeydanilov/apk-expansion' }
+    maven { url 'https://dl.bintray.com/shotzoom/apk-expansion' }
 }
 
 dependencies {
-    compile 'com.danikula.expansion:expansion:VERSION@aar'
-    compile 'com.danikula.expansion:license:VERSION@aar'
-    compile 'com.danikula.expansion:zip:VERSION@aar'
+    compile 'com.shotzoom.coachnow.expansion:expansion:VERSION@aar'
+    compile 'com.shotzoom.coachnow.expansion:license:VERSION@aar'
+    compile 'com.shotzoom.coachnow.expansion:zip:VERSION@aar'
 }
 ```
 See the latest versions [here](https://bintray.com/alexeydanilov/apk-expansion).
+
+## How to modify
+After making code changes run the following command to push new changes to bintray
+```
+./gradlew clean build bintrayUpload -PbintrayUser=shotzoom -PbintrayKey=e73ea907095b2b30459c1668c4f993f2a29b1640 -PdryRun=true
+```
 
 ## Thanks
 Thanks for [bintray-release](https://github.com/novoda/bintray-release) for easy publishing.
