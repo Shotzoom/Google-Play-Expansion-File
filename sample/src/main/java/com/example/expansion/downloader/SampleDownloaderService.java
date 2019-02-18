@@ -16,6 +16,8 @@
 
 package com.example.expansion.downloader;
 
+import android.app.Notification;
+
 import com.google.android.vending.expansion.downloader.impl.DownloaderService;
 
 /**
@@ -60,4 +62,8 @@ public class SampleDownloaderService extends DownloaderService {
         return SampleAlarmReceiver.class.getName();
     }
 
+    @Override
+    public Notification getNotification() {
+        return null;
+    }
 }

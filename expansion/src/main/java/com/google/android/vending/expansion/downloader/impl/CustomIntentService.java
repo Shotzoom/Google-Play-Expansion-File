@@ -16,6 +16,7 @@
 
 package com.google.android.vending.expansion.downloader.impl;
 
+import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
@@ -36,6 +37,7 @@ import org.slf4j.LoggerFactory;
 public abstract class CustomIntentService extends Service {
 
     private static final Logger LOG = LoggerFactory.getLogger("CancellableIntentService");
+    private static final int FOREGROUND_ID = 12345;
 
     private String mName;
     private boolean mRedelivery;
@@ -64,6 +66,8 @@ public abstract class CustomIntentService extends Service {
 
     @Override
     public void onDestroy() {
+        stopForeground(true);
+
         Thread localThread = this.mServiceLooper.getThread();
         if ((localThread != null) && (localThread.isAlive())) {
             localThread.interrupt();
@@ -89,9 +93,13 @@ public abstract class CustomIntentService extends Service {
 
     @Override
     public int onStartCommand(Intent paramIntent, int flags, int startId) {
+        startForeground(FOREGROUND_ID, getNotification());
+
         onStart(paramIntent, startId);
         return mRedelivery ? START_REDELIVER_INTENT : START_NOT_STICKY;
     }
+
+    public abstract Notification getNotification();
 
     public void setIntentRedelivery(boolean enabled) {
         this.mRedelivery = enabled;
@@ -108,6 +116,7 @@ public abstract class CustomIntentService extends Service {
                     .onHandleIntent((Intent) paramMessage.obj);
             if (shouldStop()) {
                 LOG.debug("stopSelf");
+                stopForeground(true);
                 CustomIntentService.this.stopSelf(paramMessage.arg1);
                 LOG.debug("afterStopSelf");
             }
